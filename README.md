@@ -12,13 +12,17 @@ Setup a multi-master Mesos cluster using Vagrant and KVM
 
 ### Create the cluster
 
+```
 $ git clone git@github.com:samalba/mesos-cluster-kvm.git
 $ cd mesos-cluster-kvm
 $ vagrant up
+```
 
 By default, 3 nodes are created but you can add or remove nodes by editing the `Vagrantfile'.
 The configuration script will adjust the IPs config and quorum value accordingly.
 
 ### Test the cluster
 
+```
 $ vagrant ssh node-1 -c /vagrant/scripts/test_cluster.sh
+```
