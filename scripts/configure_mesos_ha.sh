@@ -23,6 +23,8 @@ echo $node_id > /etc/zookeeper/conf/myid
 echo $my_ip > /etc/mesos-master/hostname
 echo $my_ip > /etc/mesos-master/ip
 cp /etc/mesos-master/{hostname,ip} /etc/mesos-slave
+mkdir -p /etc/marathon/conf
+cp /etc/mesos-master/hostname /etc/marathon/conf
 
 # Zookeeper masters IPs
 buf="zk://"
