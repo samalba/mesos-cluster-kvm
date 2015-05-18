@@ -18,9 +18,9 @@ Vagrant.configure("2") do |config|
             node.vm.network :private_network, :ip => "#{private_network}#{n+5}"
             node.vm.network :public_network, :dev => "eth0", :mode => 'bridge'
             # node.vm.provision :hosts
+            node.vm.provision "shell", path: "scripts/install_docker.sh"
+            node.vm.provision "shell", path: "scripts/install_mesos.sh"
+            node.vm.provision "shell", path: "scripts/configure_mesos_ha.sh", :args => "#{n+1} #{num_nodes} #{private_network}"
         end
-        config.vm.provision "shell", path: "scripts/install_docker.sh"
-        config.vm.provision "shell", path: "scripts/install_mesos.sh"
-        config.vm.provision "shell", path: "scripts/configure_mesos_ha.sh", :args => "#{n+1} #{num_nodes} #{private_network}"
     end
 end
